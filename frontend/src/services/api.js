@@ -1,4 +1,4 @@
-const BASE_URL = "https://todo-mern-ytd9.onrender.com";
+const BASE_URL = "https://todo-mern-ytd9.onrender.com/api/todos";
 
 export const getTodos = async () => {
   const res = await fetch(BASE_URL);
@@ -31,7 +31,7 @@ export const deleteTodo = async (id) => {
 
 // Mark completed / toggle completed
 export const markCompleted = async (id) => {
-  const res = await fetch(`https://todo-mern-ytd9.onrender.com/${id}/complete`, {
+  const res = await fetch(`https://todo-mern-ytd9.onrender.com/api/todos${id}/complete`, {
     method: "PATCH",
   });
   if (!res.ok) throw new Error("Failed to mark completed");
@@ -39,7 +39,7 @@ export const markCompleted = async (id) => {
 };
 
 export const updateTodo = async (id, data) => {
-  const res = await fetch(`https://todo-mern-ytd9.onrender.com/${id}`, {
+  const res = await fetch(`https://todo-mern-ytd9.onrender.com/api/todos${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
