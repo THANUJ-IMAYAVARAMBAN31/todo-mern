@@ -27,19 +27,19 @@ export const deleteTodo = async (id) => {
 
   return await res.json();
 };
-// src/services/api.js
-
-// Mark completed / toggle completed
-export const markCompleted = async (id) => {
-  const res = await fetch(`https://todo-mern-ytd9.onrender.com/api/todos${id}/complete`, {
-    method: "PATCH",
+export const markCompleted = async (id, completed) => {
+  const res = await fetch(`${BASE_URL}/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ completed }),
   });
+
   if (!res.ok) throw new Error("Failed to mark completed");
   return res.json();
 };
 
 export const updateTodo = async (id, data) => {
-  const res = await fetch(`https://todo-mern-ytd9.onrender.com/api/todos${id}`, {
+  const res = await fetch(`${BASE_URL}/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -48,5 +48,6 @@ export const updateTodo = async (id, data) => {
   if (!res.ok) throw new Error("Failed to update todo");
   return await res.json();
 };
+
 
 

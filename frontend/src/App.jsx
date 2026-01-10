@@ -47,7 +47,7 @@ const App = () => {
 };
 const handleToggleCompleted = async (todo) => {
   try {
-    const updatedTodo = await markCompleted(todo._id);
+    const updatedTodo = await markCompleted(todo._id, !todo.completed); 
     setTodos(
       todos.map((t) =>
         t._id === todo._id ? { ...t, completed: updatedTodo.completed } : t
@@ -57,6 +57,7 @@ const handleToggleCompleted = async (todo) => {
     console.error(error.message);
   }
 };
+
 
  const handleSaveEdit = async (todo) => {
   if (!todo.title.trim()) return;
