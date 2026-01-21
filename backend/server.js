@@ -11,7 +11,7 @@ app.use("/api/todos", todoRoutes);
 app.use(
   cors({
     origin: [
-      "hthttps://todo-mern-steel-xi.vercel.app/", 
+      "https://todo-mern-steel-xi.vercel.app/", 
       "http://localhost:5173",
     ],
   })
