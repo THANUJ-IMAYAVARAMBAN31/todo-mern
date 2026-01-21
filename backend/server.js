@@ -10,7 +10,6 @@ app.use(cors());
 
 app.use("/api/todos", todoRoutes);
 app.use(express.json());
-app.options("*", cors());
 const PORT = 4000;
 const MONGO_URI = process.env.MONGO_URI;
 
