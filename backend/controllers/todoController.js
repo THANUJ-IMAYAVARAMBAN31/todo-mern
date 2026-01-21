@@ -8,7 +8,23 @@ export const getTodos = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+export const searchTodos = async (req, res) => {
+  try {
+    const { q } = req.query;
 
+    if (!q || !q.trim()) {
+      return res.status(400).json({ message: "Search query required" });
+    }
+
+    const todos = await Todo.find({
+      title: { $regex: q, $options: "i" },
+    });
+
+    res.status(200).json(todos);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 export const createTodo = async (req, res) => {
   let title = req.body.title;
 

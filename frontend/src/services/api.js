@@ -5,6 +5,13 @@ export const getTodos = async () => {
   return res.json();
 };
 
+export const searchTodos = async (query) => {
+  const res = await fetch(
+    `${BASE_URL}/search?q=${encodeURIComponent(query)}`
+  );
+  return res.json();
+};
+
 export const createTodo = async (title) => {
   const res = await fetch(BASE_URL, {
     method: "POST",
@@ -27,14 +34,18 @@ export const deleteTodo = async (id) => {
 
   return await res.json();
 };
-export const markCompleted = async (id, completed) => {
-  const res = await fetch(`${BASE_URL}/${id}`, {
-    method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ completed }),
-  });
+export const markCompleted = async (id) => {
+  const res = await fetch(
+    `${BASE_URL}/${id}/complete`,
+    {
+      method: "PATCH",
+    }
+  );
 
-  if (!res.ok) throw new Error("Failed to mark completed");
+  if (!res.ok) {
+    throw new Error("Failed to mark completed");
+  }
+
   return res.json();
 };
 

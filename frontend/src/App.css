@@ -8,12 +8,36 @@ body {
 
 /* Main container */
 .todo-container {
-  background: #ffffff;
+  width: 400px;
   margin: 50px auto;
-  padding: 25px;
-  max-width: 500px;
-  border-radius: 12px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+}
+
+.todo-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex: 1;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: gray;
 }
 
 /* Title */
