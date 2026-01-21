@@ -11,7 +11,7 @@ app.use("/api/todos", todoRoutes);
 app.use(
   cors({
     origin: [
-      "https://get-itdone.netlify.app", 
+      "hthttps://todo-mern-steel-xi.vercel.app/", 
       "http://localhost:5173",
     ],
   })
