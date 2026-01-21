@@ -6,14 +6,8 @@ import todoRoutes from "./routes/todoRoutes.js";
 
 dotenv.config();
 const app = express();
-app.use(
-  cors({
-    origin: [
-      "https://todo-mern-steel-xi.vercel.app/", 
-      "http://localhost:5173",
-    ],
-  })
-);
+app.use(cors());
+
 app.use("/api/todos", todoRoutes);
 app.use(express.json());
 app.options("*", cors());
