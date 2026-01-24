@@ -33,7 +33,6 @@ export const createTodo = async (req, res) => {
       error: "Title is required",
     });
   }
-
   try {
     const todo = await Todo.create({ title: req.body.title });
     res.status(201).json(todo);
