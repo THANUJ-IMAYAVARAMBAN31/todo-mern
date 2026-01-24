@@ -12,16 +12,27 @@ export const searchTodos = async (query) => {
   return res.json();
 };
 
-export const createTodo = async (title) => {
-  const res = await fetch(BASE_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title }),
-  });
+export const createTodo = async (req, res) => {
+  console.log("BODY RECEIVED:", req.body);
+  console.log("HEADERS:", req.headers);
 
-  if (!res.ok) throw new Error("Failed to create todo");
-  return res.json();
+  const title = req.body?.title; 
+
+  if (!title || typeof title !== "string") {
+    return res.status(400).json({
+      error: "Title is required and must be a string",
+    });
+  }
+
+  try {
+    const todo = await Todo.create({ title });
+    res.status(201).json(todo);
+  } catch (err) {
+    console.error("Create todo error:", err);
+    res.status(500).json({ message: err.message });
+  }
 };
+
 
 export const deleteTodo = async (id) => {
   const res = await fetch(`${BASE_URL}/${id}`, {
