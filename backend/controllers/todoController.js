@@ -26,19 +26,17 @@ export const searchTodos = async (req, res) => {
   }
 };
 export const createTodo = async (req, res) => {
-  console.log("BODY:", req.body);
+  const { title } = req.body;
 
-  if (!req.body || typeof req.body.title !== "string") {
-    return res.status(400).json({
-      error: "Title is required",
-    });
+  if (!title || typeof title !== "string") {
+    return res.status(400).json({ error: "Title is required" });
   }
+
   try {
-    const todo = await Todo.create({ title: req.body.title });
+    const todo = await Todo.create({ title });
     res.status(201).json(todo);
   } catch (err) {
-    console.error("Create todo error:", err);
-    res.status(500).json({ message: "Failed to create todo" });
+    res.status(500).json({ message: err.message });
   }
 };
 
