@@ -12,7 +12,6 @@ const router = express.Router();
 router.get("/search",searchTodos);
 router.get("/", getTodos); 
 router.post("/", createTodo);
-
 router.put("/:id", updateTodo);
 router.delete("/:id", deleteTodo);
 router.patch("/:id/complete", markCompleted);

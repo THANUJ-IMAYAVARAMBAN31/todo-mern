@@ -1,4 +1,4 @@
-const BASE_URL = "https://todo-mern-ytd9.onrender.com/api/todos";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const getTodos = async () => {
   const res = await fetch(BASE_URL);

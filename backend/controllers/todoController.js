@@ -27,7 +27,6 @@ export const searchTodos = async (req, res) => {
 };
 export const createTodo = async (req, res) => {
   let title = req.body.title;
-
   if (!title || typeof title !== "string") {
     return res.status(400).json({ error: "Title is required and must be a string" });
   }
@@ -39,7 +38,6 @@ export const createTodo = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
 
 export const updateTodo = async (req, res) => {
   const { id } = req.params;

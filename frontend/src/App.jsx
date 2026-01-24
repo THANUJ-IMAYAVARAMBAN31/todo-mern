@@ -14,7 +14,6 @@ const App = () => {
   const [search, setSearch] = useState("");
   const [newTodo, setNewTodo] = useState("");
 
-  // Load all todos initially
   useEffect(() => {
     fetchTodos();
   }, []);
@@ -32,7 +31,6 @@ const handleSearch = async () => {
   const data = await searchTodos(search);
   setTodos(data);
 };
-  // ADD TODO
   const handleAddTodo = async () => {
     if (!newTodo.trim()) return;
     try {
